@@ -27,9 +27,12 @@ y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 model=Sequential() 
 model=load_model('data.h5')
-img=cv.imread('7.jpg')
+img=cv.imread('3.jpg')
 img2=cv.resize(img,(28,28));
 gray=cv.cvtColor(img2,cv.COLOR_BGR2GRAY);
+gray=255-gray
+gray=gray.astype('float32')
+gray=gray/255
 test=gray.reshape(1,28,28,1)
 plt.imshow(test[0,:,:,0])
 plt.show()
